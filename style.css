@@ -22,6 +22,7 @@ body {
   background-color: aqua;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .clear {
@@ -29,6 +30,6 @@ body {
   border: 1px black solid;
 }
 
-.clear:horver {
+.clear:hover {
   background-color: gray;
 }

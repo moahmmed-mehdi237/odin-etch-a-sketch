@@ -21,30 +21,30 @@ const setWidth = () => {
 };
 
 
-// when changing the size it adds the new divs to the old ones instead of replacing them!
-// and for some reason the divs are not fitting perfectly inside the container
-
-
 const fillContainer = () => {
   for (let row = 0; row < cellNumber; row++) {
     for (let col = 0; col < cellNumber; col++) {
-      const child = document.createElement('div');
+      const child = document.createElement("div");
       child.classList.add("cell", "clear");
       container.appendChild(child);
     }
   }
   const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
-    cell.style.width = cellWidth - 2;
-    cell.style.height = cellWidth - 2;
+    cell.style.width = cellWidth;
+    cell.style.height = cellWidth;
   });
+};
+
+
+const clearContainer = () => {
+  container.innerHTML = "";
 };
 
 const handleChange = () => {
   getInput();
   setWidth();
+  clearContainer();
   fillContainer();
 };
 
-// buttons = document.querySelectorAll("button.choice");
-// console.log(buttons);
