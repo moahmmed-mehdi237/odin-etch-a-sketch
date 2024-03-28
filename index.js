@@ -2,8 +2,10 @@ const baseWidth = 480;
 let cellNumber = 16;
 let containerWidth = baseWidth;
 let cellWidth = containerWidth / cellNumber;
+let rainbow = false;
 
 const container = document.querySelector("#container");
+
 
 const getInput = () => {
   input = prompt("enter n such that the width of the board is nxn");
@@ -20,6 +22,9 @@ const setWidth = () => {
   console.log(cellWidth);
 };
 
+const clearContainer = () => {
+  container.innerHTML = "";
+};
 
 const fillContainer = () => {
   for (let row = 0; row < cellNumber; row++) {
@@ -27,6 +32,7 @@ const fillContainer = () => {
       const child = document.createElement("div");
       child.classList.add("cell", "clear");
       container.appendChild(child);
+      child.addEventListener("pointerdown", fillCell);
     }
   }
   const cells = document.querySelectorAll(".cell");
@@ -37,10 +43,6 @@ const fillContainer = () => {
 };
 
 
-const clearContainer = () => {
-  container.innerHTML = "";
-};
-
 const handleChange = () => {
   getInput();
   setWidth();
@@ -48,3 +50,15 @@ const handleChange = () => {
   fillContainer();
 };
 
+const fillGray = (e) => {
+  e.target.style.backgroundColor = "#8f8f8f";
+};
+
+const fillRainbow = () => {
+  console.log("this fills rainbow");
+};
+
+const fillCell = (e) => {
+  if (rainbow) fillRainbow(e);
+  else fillGray(e);
+};
