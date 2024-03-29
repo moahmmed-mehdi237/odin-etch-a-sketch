@@ -29,9 +29,10 @@ body {
 
 .clear {
   background-color: white;
-  /* border: 1px black solid; */
+  border: 1px black solid;
 }
 
-.clear:hover {
-  background-color: gray;
+button {
+  background-color: white;
+  color: black;
 }

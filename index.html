@@ -9,8 +9,8 @@
   <body>
     <div class="choices">
       <button onclick="handleChange()">change cell number</button>
-      <button class="choice" onclick=" rainbow =false">black</button>
-      <button class="choice" onclick="rainbow =true">rainbow</button>
+      <button class="choice" onclick=" changeToRainbow(event)">rainbow</button>
+      <button class="choice" onclick="changeToEraser(event)">eraser</button>
       <button class="choice" onclick="fillContainer()">clear</button>
     </div>
     <div class="container" id="container"></div>
