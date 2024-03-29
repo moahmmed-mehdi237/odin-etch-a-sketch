@@ -5,7 +5,9 @@ let cellWidth = containerWidth / cellNumber;
 let rainbow = false;
 
 const container = document.querySelector("#container");
-
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 const getInput = () => {
   input = prompt("enter n such that the width of the board is nxn");
@@ -27,12 +29,14 @@ const clearContainer = () => {
 };
 
 const fillContainer = () => {
+  clearContainer();
   for (let row = 0; row < cellNumber; row++) {
     for (let col = 0; col < cellNumber; col++) {
       const child = document.createElement("div");
       child.classList.add("cell", "clear");
       container.appendChild(child);
-      child.addEventListener("pointerdown", fillCell);
+      child.addEventListener("mousedown", fillCell);
+      child.addEventListener("mouseover", fillCell);
     }
   }
   const cells = document.querySelectorAll(".cell");
@@ -42,11 +46,9 @@ const fillContainer = () => {
   });
 };
 
-
 const handleChange = () => {
   getInput();
   setWidth();
-  clearContainer();
   fillContainer();
 };
 
@@ -59,6 +61,10 @@ const fillRainbow = () => {
 };
 
 const fillCell = (e) => {
-  if (rainbow) fillRainbow(e);
-  else fillGray(e);
+  if (e.type === "mousedown" || mouseDown) {
+    if (rainbow) fillRainbow(e);
+    else fillGray(e);
+  }
 };
+
+fillContainer();
